@@ -11,6 +11,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import AuthProvider from './contexts/AuthProvider';
 import Home from './pages/Home';
+import AddTutorials from './pages/AddTutorials';
 
 
 
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>
+      },
+      {
+        path:"/addTutorials",
+        element: <AddTutorials></AddTutorials>
       },
       {
         path: "/login",
