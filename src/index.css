@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+@import "tailwindcss";
+@plugin "daisyui";
+
+body{
+  font-family: "Abel", sans-serif;
+  background-color: #F0FDF4;
+}
