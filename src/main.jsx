@@ -11,6 +11,7 @@ import Home from "./pages/Home";
 import AddTutorials from "./pages/AddTutorials";
 import FindTutors from "./pages/FindTutors";
 import Loader from "./components/Loader";
+import FindTutorsByCategory from "./components/FindTutorsByCategory";
 
 const router = createBrowserRouter([
   {
@@ -30,8 +31,22 @@ const router = createBrowserRouter([
           return data;
         },
         element: <FindTutors />,
-        hydrateFallbackElement:<Loader></Loader>
+        hydrateFallbackElement: <Loader></Loader>,
       },
+      {
+        path: "/findTutors/:category",
+        element: <FindTutorsByCategory />,
+        loader: async ({ params }) => {
+          const res = await fetch("http://localhost:3000/tutors");
+          const data = await res.json();
+          return data.filter(
+            (tutor) =>
+              tutor.language.toLowerCase() === params.category.toLowerCase()
+          );
+        },
+        hydrateFallbackElement:<Loader></Loader>,
+      },
+
       {
         path: "/addTutorials",
         element: <AddTutorials></AddTutorials>,

@@ -35,7 +35,7 @@ const LanguageCategories = () => {
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {categories.map((cat) => (
-          <Link to={`/findTutors?language=${cat.title}`} key={cat.title}>
+          <Link to={`/findTutors/${cat.title}`} key={cat.title}>
             <div className="flex items-center justify-between border rounded-xl p-4 hover:shadow-lg transition cursor-pointer">
               <div className="flex items-center gap-4">
                 <img
