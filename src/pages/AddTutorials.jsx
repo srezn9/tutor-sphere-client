@@ -1,13 +1,16 @@
-import React from 'react';
+import React from "react";
 
 const AddTutorials = () => {
+  const handleAddTutorials = e =>{
+    e.preventDefault();
+  }
   return (
     <div className="max-w-3xl mx-auto my-12 px-4">
       <div className="bg-white dark:bg-gray-900 rounded-xl shadow-md p-8">
         <h2 className="text-2xl font-semibold text-center mb-6 text-gray-800 dark:text-white">
           Add New Tutorial
         </h2>
-        <form className="space-y-5">
+        <form onSubmit={handleAddTutorials} className="space-y-5">
           {/* Name and Email */}
           <div className="grid md:grid-cols-2 gap-4">
             <div>
@@ -77,6 +80,18 @@ const AddTutorials = () => {
               required
             ></textarea>
           </div>
+          <div>
+            <label className="block mb-1 font-medium">
+              Review
+            </label>
+            <input
+              type="number"
+              value="0"
+              readOnly
+              className="w-full input input-bordered"
+              name="review"
+            />
+          </div>
 
           {/* Submit */}
           <div className="text-center">
@@ -88,8 +103,5 @@ const AddTutorials = () => {
       </div>
     </div>
   );
-};
-
-
-
+  };
 export default AddTutorials;

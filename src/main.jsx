@@ -1,21 +1,16 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router";
-import HomeLayout from './pages/HomeLayout';
-import ErrorPage from './pages/ErrorPage';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import AuthProvider from './contexts/AuthProvider';
-import Home from './pages/Home';
-import AddTutorials from './pages/AddTutorials';
-
-
-
-
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import { createBrowserRouter, RouterProvider } from "react-router";
+import HomeLayout from "./pages/HomeLayout";
+import ErrorPage from "./pages/ErrorPage";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import AuthProvider from "./contexts/AuthProvider";
+import Home from "./pages/Home";
+import AddTutorials from "./pages/AddTutorials";
+import FindTutors from "./pages/FindTutors";
+import Loader from "./components/Loader";
 
 const router = createBrowserRouter([
   {
@@ -25,28 +20,38 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>
+        element: <Home></Home>,
       },
       {
-        path:"/addTutorials",
-        element: <AddTutorials></AddTutorials>
+        path: "/findTutors",
+        loader: async () => {
+          const res = await fetch("http://localhost:3000/tutors");
+          const data = await res.json();
+          return data;
+        },
+        element: <FindTutors />,
+        hydrateFallbackElement:<Loader></Loader>
+      },
+      {
+        path: "/addTutorials",
+        element: <AddTutorials></AddTutorials>,
       },
       {
         path: "/login",
-        element:<Login></Login>
+        element: <Login></Login>,
       },
       {
         path: "/register",
-        element:<Register></Register>
-      }
+        element: <Register></Register>,
+      },
     ],
   },
 ]);
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthProvider>
-       <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </AuthProvider>
   </StrictMode>
-)
+);
