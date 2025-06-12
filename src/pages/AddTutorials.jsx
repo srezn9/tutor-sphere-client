@@ -1,9 +1,39 @@
 import React from "react";
+import { useNavigate } from "react-router";
+import Swal from "sweetalert2";
 
 const AddTutorials = () => {
-  const handleAddTutorials = e =>{
+  const navigate = useNavigate();
+  const handleAddTutorials = (e) => {
     e.preventDefault();
-  }
+    const form = e.target;
+    const formData = new FormData(form);
+    const newCoffee = Object.fromEntries(formData.entries());
+    console.log(newCoffee);
+
+    fetch("http://localhost:3000/tutors", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newCoffee),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log('after adding tutor to db',data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Tutorial added successfully!",
+            icon: "success",
+            confirmButtonColor: "#9C27B0",
+            draggable: true,
+          }).then(() => {
+            form.reset();
+            navigate("/findTutors");
+          });
+        }
+      });
+  };
   return (
     <div className="max-w-3xl mx-auto my-12 px-4">
       <div className="bg-white dark:bg-gray-900 rounded-xl shadow-md p-8">
@@ -19,6 +49,7 @@ const AddTutorials = () => {
                 type="text"
                 placeholder="User Name"
                 className="w-full input input-bordered"
+                name="name"
               />
             </div>
             <div>
@@ -27,6 +58,7 @@ const AddTutorials = () => {
                 type="email"
                 placeholder="user@example.com"
                 className="w-full input input-bordered"
+                name="email"
               />
             </div>
           </div>
@@ -38,6 +70,7 @@ const AddTutorials = () => {
               type="url"
               placeholder="https://example.com/image.jpg"
               className="w-full input input-bordered"
+              name="url"
               required
             />
           </div>
@@ -45,7 +78,11 @@ const AddTutorials = () => {
           {/* Language */}
           <div>
             <label className="block mb-1 font-medium">Language</label>
-            <select className="w-full select select-bordered" required>
+            <select
+              className="w-full select select-bordered"
+              name="language"
+              required
+            >
               <option value="">Select a language</option>
               <option>English</option>
               <option>Spanish</option>
@@ -66,6 +103,7 @@ const AddTutorials = () => {
               type="number"
               placeholder="Enter price"
               className="w-full input input-bordered"
+              name="price"
               required
             />
           </div>
@@ -77,13 +115,12 @@ const AddTutorials = () => {
               rows="4"
               placeholder="Write a short description..."
               className="w-full textarea textarea-bordered"
+              name="description"
               required
             ></textarea>
           </div>
           <div>
-            <label className="block mb-1 font-medium">
-              Review
-            </label>
+            <label className="block mb-1 font-medium">Review</label>
             <input
               type="number"
               value="0"
@@ -95,7 +132,11 @@ const AddTutorials = () => {
 
           {/* Submit */}
           <div className="text-center">
-            <button type="submit" className="btn btn-primary px-10">
+            <button
+              type="submit"
+              className="btn btn-primary px-10"
+              value="Add Tutorial"
+            >
               Add Tutorial
             </button>
           </div>
@@ -103,5 +144,5 @@ const AddTutorials = () => {
       </div>
     </div>
   );
-  };
+};
 export default AddTutorials;
