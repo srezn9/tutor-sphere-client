@@ -12,6 +12,9 @@ import AddTutorials from "./pages/AddTutorials";
 import FindTutors from "./pages/FindTutors";
 import Loader from "./components/Loader";
 import FindTutorsByCategory from "./components/FindTutorsByCategory";
+import TutorDetails from "./pages/TutorDetails";
+import PrivateRoute from "./pages/PrivateRoute";
+import BookedTutors from "./pages/BookedTutors";
 
 const router = createBrowserRouter([
   {
@@ -44,12 +47,28 @@ const router = createBrowserRouter([
               tutor.language.toLowerCase() === params.category.toLowerCase()
           );
         },
-        hydrateFallbackElement:<Loader></Loader>,
+        hydrateFallbackElement: <Loader></Loader>,
+      },
+      {
+        path: "/tutors/:id",
+        loader: async ({ params }) => {
+          const res = await fetch(`http://localhost:3000/tutors/${params.id}`);
+          const data = await res.json();
+          return data;
+        },
+        element: <PrivateRoute>
+          <TutorDetails></TutorDetails>
+        </PrivateRoute>,
+        hydrateFallbackElement: <Loader></Loader>,
       },
 
       {
         path: "/addTutorials",
         element: <AddTutorials></AddTutorials>,
+      },
+      {
+        path: "/myBookedTutors",
+        element: <BookedTutors></BookedTutors>,
       },
       {
         path: "/login",

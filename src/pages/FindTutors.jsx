@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData } from "react-router";
+import { Link, useLoaderData } from "react-router";
 
 const FindTutors = () => {
   const tutors = useLoaderData(); 
@@ -31,9 +31,11 @@ const FindTutors = () => {
                 <strong>Review:</strong> {tutor.review}
               </p>
               <p className="text-gray-600 mt-2">{tutor.description}</p>
+              <Link to ={`/tutors/${tutor._id}`}>
               <button className="mt-4 px-4 py-2 bg-violet-500 text-white rounded hover:bg-blue-600 transition">
                 View Details
               </button>
+              </Link>
             </div>
           </div>
         ))}
