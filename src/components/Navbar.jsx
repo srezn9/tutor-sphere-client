@@ -11,28 +11,35 @@ const Navbar = () => {
     logout()
       .then(() => {
         Swal.fire({
-          toast: true,
-          position: "top-end",
+          title: "Logged Out!",
+          text: "You have been logged out successfully.",
           icon: "success",
-          title: "Logged out successfully",
-          showConfirmButton: false,
+          iconColor: "#14b8a6",
+          background: "#f5f3ff",
+          color: "#4c1d95",
+          confirmButtonText: "Okay",
+          confirmButtonColor: "#8b5cf6",
+          customClass: {
+            popup: "rounded-xl shadow-lg",
+            confirmButton: "px-4 py-2 text-white font-semibold",
+          },
           timer: 3000,
-          background: "#ea580c",
-          color: "#fff",
-          iconColor: "#fff",
         });
       })
-      .catch((error) => {
+      .catch(() => {
         Swal.fire({
-          toast: true,
-          position: "top-end",
+          title: "Logout Failed",
+          text: "Something went wrong while logging out.",
           icon: "error",
-          title: error.message || "Logout failed",
-          showConfirmButton: false,
-          timer: 3000,
-          background: "#ea580c",
-          color: "#fff",
-          iconColor: "#fff",
+          iconColor: "#e11d48",
+          background: "#fdf4ff",
+          color: "#701a75",
+          confirmButtonText: "Retry",
+          confirmButtonColor: "#c084fc",
+          customClass: {
+            popup: "rounded-xl shadow-lg",
+            confirmButton: "px-4 py-2 text-white font-semibold",
+          },
         });
       });
   };

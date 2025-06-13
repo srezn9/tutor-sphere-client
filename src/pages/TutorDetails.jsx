@@ -60,7 +60,7 @@ const TutorDetails = () => {
         onClick={handleBooking}
         className="mt-4 px-6 py-3 bg-teal-500 text-white rounded hover:bg-teal-600"
       >
-        Book
+        Book Now
       </button>
     </div>
   );

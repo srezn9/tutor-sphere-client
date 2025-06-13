@@ -1,32 +1,36 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Contexts/AuthContext";
 
 const AddTutorials = () => {
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
+
   const handleAddTutorials = (e) => {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
-    const newCoffee = Object.fromEntries(formData.entries());
-    console.log(newCoffee);
+    const newTutorial = Object.fromEntries(formData.entries());
+
+    // Parse numeric values
+    newTutorial.price = parseFloat(newTutorial.price);
+    newTutorial.review = parseInt(newTutorial.review);
 
     fetch("http://localhost:3000/tutors", {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(newCoffee),
+      body: JSON.stringify(newTutorial),
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log('after adding tutor to db',data);
         if (data.insertedId) {
           Swal.fire({
             title: "Tutorial added successfully!",
             icon: "success",
             confirmButtonColor: "#9C27B0",
-            draggable: true,
           }).then(() => {
             form.reset();
             navigate("/MyTutorials");
@@ -34,6 +38,7 @@ const AddTutorials = () => {
         }
       });
   };
+
   return (
     <div className="max-w-3xl mx-auto my-12 px-4">
       <div className="bg-white dark:bg-gray-900 rounded-xl shadow-md p-8">
@@ -41,26 +46,26 @@ const AddTutorials = () => {
           Add New Tutorial
         </h2>
         <form onSubmit={handleAddTutorials} className="space-y-5">
-          {/* Name and Email */}
+          {/* Auto-filled Name and Email */}
           <div className="grid md:grid-cols-2 gap-4">
             <div>
               <label className="block mb-1 font-medium">Name</label>
               <input
                 type="text"
-                placeholder="User Name"
-                className="w-full input input-bordered"
+                value={user?.displayName || ""}
                 name="name"
-                required
+                readOnly
+                className="w-full input input-bordered bg-gray-100 text-gray-600"
               />
             </div>
             <div>
               <label className="block mb-1 font-medium">Email</label>
               <input
                 type="email"
-                placeholder="user@example.com"
-                className="w-full input input-bordered"
+                value={user?.email || ""}
                 name="email"
-                required
+                readOnly
+                className="w-full input input-bordered bg-gray-100 text-gray-600"
               />
             </div>
           </div>
@@ -121,13 +126,15 @@ const AddTutorials = () => {
               required
             ></textarea>
           </div>
+
+          {/* Review (default 0) */}
           <div>
             <label className="block mb-1 font-medium">Review</label>
             <input
               type="number"
               value="0"
               readOnly
-              className="w-full input input-bordered"
+              className="w-full input input-bordered bg-gray-100 text-gray-600"
               name="review"
             />
           </div>
@@ -147,4 +154,5 @@ const AddTutorials = () => {
     </div>
   );
 };
+
 export default AddTutorials;

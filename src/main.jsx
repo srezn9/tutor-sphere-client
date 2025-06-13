@@ -22,10 +22,12 @@ const router = createBrowserRouter([
     path: "/",
     element: <HomeLayout></HomeLayout>,
     errorElement: <ErrorPage></ErrorPage>,
+    hydrateFallbackElement:<Loader></Loader>,
     children: [
       {
         path: "/",
         element: <Home></Home>,
+        hydrateFallbackElement: <Loader></Loader>,
       },
       {
         path: "/findTutors",
@@ -74,12 +76,14 @@ const router = createBrowserRouter([
         element: <PrivateRoute>
           <BookedTutors></BookedTutors>
         </PrivateRoute>,
+        hydrateFallbackElement:<Loader></Loader>,
       },
       {
         path: "/myTutorials",
         element: <PrivateRoute>
           <MyTutorials></MyTutorials>
-        </PrivateRoute>
+        </PrivateRoute>,
+        hydrateFallbackElement:<Loader></Loader>,
       },
       {
         path: "/login",

@@ -88,7 +88,7 @@ const BookedTutors = () => {
                 </p>
                 <p className="text-gray-600">
                   <span className="font-medium">Reviews:</span>{" "}
-                  {tutor.review || 0}
+                  {tutor.review}
                 </p>
                 <button
                   onClick={() => handleReview(tutor.tutorId)}

@@ -27,6 +27,7 @@ const LanguageCategories = () => {
         setCategories(uniqueLanguages.slice(0, 9));
       });
   }, []);
+  
 
   return (
     <div className="px-6 py-10">
