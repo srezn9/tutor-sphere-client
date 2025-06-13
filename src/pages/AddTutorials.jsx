@@ -29,7 +29,7 @@ const AddTutorials = () => {
             draggable: true,
           }).then(() => {
             form.reset();
-            navigate("/findTutors");
+            navigate("/MyTutorials");
           });
         }
       });
@@ -50,6 +50,7 @@ const AddTutorials = () => {
                 placeholder="User Name"
                 className="w-full input input-bordered"
                 name="name"
+                required
               />
             </div>
             <div>
@@ -59,6 +60,7 @@ const AddTutorials = () => {
                 placeholder="user@example.com"
                 className="w-full input input-bordered"
                 name="email"
+                required
               />
             </div>
           </div>
