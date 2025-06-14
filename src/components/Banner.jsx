@@ -3,15 +3,27 @@ import React from "react";
 const Banner = () => {
   return (
     <div className="hero bg-base-200 min-h-screen">
-      <div className="hero-content flex-col lg:flex-row-reverse">
-        <img
-          src="https://i.postimg.cc/yNNfHs1n/Tutoring.jpg"
-          className="max-w-sm rounded-lg shadow-2xl"
-        />
-        <div>
-          <h1 className="text-5xl font-bold">Empowering Minds, One Lesson at a Time</h1>
-          <p className="py-6">
-            Join TutorSphere – your gateway to expert tutors, personalized learning, and academic success across every subject and level.
+      <div className="hero-content flex-col lg:flex-row-reverse gap-10">
+        <div className="relative group">
+          <img
+            src="https://i.postimg.cc/yNNfHs1n/Tutoring.jpg"
+            alt="Tutoring"
+            className="max-w-sm w-full rounded-2xl shadow-2xl transform group-hover:scale-105 transition duration-500 border-[6px] border-white ring-4 ring-blue-200"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent rounded-2xl"></div>
+        </div>
+
+        <div className="text-center lg:text-left">
+          <h1 className="text-5xl font-bold text-gray-800">
+            Empowering Minds, <br className="hidden lg:block" /> One Lesson at a
+            Time
+          </h1>
+          <p className="py-6 max-w-lg text-gray-600">
+            Join <h2 className="text-sm font-bold text-teal-500">
+              Tutor<span className="text-violet-500">Sphere</span>
+            </h2>
+            – your gateway to expert tutors, personalized language learning, and
+            confidence-building through every session.
           </p>
         </div>
       </div>
