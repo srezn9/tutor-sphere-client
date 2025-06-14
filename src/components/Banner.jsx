@@ -2,7 +2,7 @@ import React from "react";
 
 const Banner = () => {
   return (
-    <div className="hero bg-base-200 min-h-screen">
+    <div className="hero bg-base-200 text-base-content min-h-screen">
       <div className="hero-content flex-col lg:flex-row-reverse gap-10">
         <div className="relative group">
           <img
@@ -14,11 +14,11 @@ const Banner = () => {
         </div>
 
         <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold text-gray-800">
+          <h1 className="text-5xl font-bold">
             Empowering Minds, <br className="hidden lg:block" /> One Lesson at a
             Time
           </h1>
-          <p className="py-6 max-w-lg text-gray-600">
+          <p className="py-6 max-w-lg">
             Join <span className="text-sm font-bold text-teal-500">
               Tutor<span className="text-violet-500">Sphere</span>
             </span>

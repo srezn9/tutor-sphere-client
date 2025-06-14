@@ -77,26 +77,26 @@ const MyTutorials = () => {
   };
 
   return (
-    <div className="p-6 max-w-6xl mx-auto">
+    <div className="p-6 max-w-6xl mx-auto  bg-base-200 text-base-content">
       <h2 className="text-2xl font-bold mb-4">My Tutorials</h2>
-      <div className="overflow-x-auto shadow rounded-lg border border-gray-200">
-        <table className="min-w-full divide-y divide-gray-200 text-sm text-left">
-          <thead className="bg-gray-100">
+      <div className="overflow-x-auto shadow rounded-lg border bg-base-100">
+        <table className="min-w-full divide-y divide-gray-100 text-sm text-left">
+          <thead className=" bg-base-300">
             <tr>
-              <th className="px-4 py-3 font-medium text-gray-700">Image</th>
-              <th className="px-4 py-3 font-medium text-gray-700">Language</th>
-              <th className="px-4 py-3 font-medium text-gray-700">Price</th>
-              <th className="px-4 py-3 font-medium text-gray-700">
+              <th className="px-4 py-3 font-medium">Image</th>
+              <th className="px-4 py-3 font-medium">Language</th>
+              <th className="px-4 py-3 font-medium">Price</th>
+              <th className="px-4 py-3 font-medium">
                 Description
               </th>
-              <th className="px-4 py-3 font-medium text-gray-700">Review</th>
-              <th className="px-4 py-3 font-medium text-gray-700">Actions</th>
+              <th className="px-4 py-3 font-medium">Review</th>
+              <th className="px-4 py-3 font-medium">Actions</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
             {tutorials.length > 0 ? (
               tutorials.map((tut) => (
-                <tr key={tut._id} className="hover:bg-gray-50">
+                <tr key={tut._id}>
                   <td className="px-4 py-3">
                     <img
                       src={tut.url}
@@ -140,7 +140,7 @@ const MyTutorials = () => {
         <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50">
           <form
             onSubmit={handleUpdate}
-            className="bg-white p-6 rounded-lg w-full max-w-lg shadow-md space-y-4"
+            className="p-6 rounded-lg w-full max-w-lg shadow-md space-y-4"
           >
             <h3 className="text-xl font-semibold">Update Tutorial</h3>
 

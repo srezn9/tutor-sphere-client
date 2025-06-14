@@ -15,8 +15,8 @@ const StatSection = () => {
   }, []);
 
   return (
-    <div className="text-center my-20">
-      <div className="stats stats-vertical lg:stats-horizontal shadow bg-white space-x-10">
+    <div className="text-center my-20 bg-base-100 text-base-content ">
+      <div className="stats stats-vertical lg:stats-horizontal shadow bg-base-200 space-x-10">
         <div className="stat">
           <div className="stat-title">Tutors</div>
           <div className="stat-value">{stats.tutors}</div>

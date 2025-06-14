@@ -56,7 +56,7 @@ const BookedTutors = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
+    <div className="max-w-6xl mx-auto px-4 py-8  bg-base-200 text-base-content">
       <h1 className="text-3xl font-bold mb-8 text-center">My Booked Tutors</h1>
 
       {bookings.length === 0 ? (
@@ -66,7 +66,7 @@ const BookedTutors = () => {
           {bookings.map((tutor) => (
             <div
               key={tutor.tutorId}
-              className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+              className=" bg-base-100 rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow"
             >
               <div className="flex justify-center">
                 <img 
@@ -76,17 +76,17 @@ const BookedTutors = () => {
               />
                 </div>
               <div className="p-4">
-                <h2 className="text-xl font-semibold text-gray-800">
+                <h2 className="text-xl font-semibold">
                   {tutor.name}
                 </h2>
-                <p className="text-gray-600">
+                <p>
                   <span className="font-medium">Language:</span>{" "}
                   {tutor.language}
                 </p>
-                <p className="text-gray-600">
+                <p>
                   <span className="font-medium">Price:</span> ${tutor.price}
                 </p>
-                <p className="text-gray-600">
+                <p>
                   <span className="font-medium">Reviews:</span>{" "}
                   {tutor.review}
                 </p>

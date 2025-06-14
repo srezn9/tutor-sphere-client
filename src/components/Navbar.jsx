@@ -1,11 +1,26 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
-
 import Swal from "sweetalert2";
 import { AuthContext } from "../Contexts/AuthContext";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
+
+  // Theme state: 'light' or 'dark'
+  const [theme, setTheme] = useState(() => {
+    // Initialize from localStorage or default to 'light'
+    return localStorage.getItem("theme") || "light";
+  });
+
+  // Update the data-theme attribute when theme changes
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  };
 
   const handleLogout = () => {
     logout()
@@ -43,6 +58,7 @@ const Navbar = () => {
         });
       });
   };
+
   const links = (
     <>
       <li>
@@ -107,6 +123,7 @@ const Navbar = () => {
       </li>
     </>
   );
+
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="navbar-start">
@@ -119,13 +136,12 @@ const Navbar = () => {
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              {" "}
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M4 6h16M4 12h8m-8 6h16"
-              />{" "}
+              />
             </svg>
           </div>
           <ul
@@ -157,7 +173,17 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
 
-      <div className="navbar-end hidden lg:flex gap-5">
+      <div className="navbar-end hidden lg:flex items-center gap-4">
+        {/* Theme toggle button */}
+        <button
+          onClick={toggleTheme}
+          className="btn btn-sm btn-outline"
+          title="Toggle Dark/Light Theme"
+          aria-label="Toggle Dark/Light Theme"
+        >
+          {theme === "light" ? "🌞 Light" : "🌙 Dark"}
+        </button>
+
         {user ? (
           <div className="dropdown dropdown-end">
             <div

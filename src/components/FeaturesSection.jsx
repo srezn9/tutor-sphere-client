@@ -28,22 +28,20 @@ const features = [
 
 const FeaturesSection = () => {
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-base-100 text-base-content">
       <div className="container mx-auto px-6 lg:px-16">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
           Why Choose TutorSphere?
         </h2>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="card bg-white shadow-lg rounded-lg p-6 flex flex-col items-center text-center hover:shadow-xl transition-shadow"
+              className="card bg-base-200 shadow-lg rounded-lg p-6 flex flex-col items-center text-center hover:shadow-xl transition-shadow"
             >
               <div className="mb-4">{feature.icon}</div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                {feature.title}
-              </h3>
-              <p className="text-gray-600">{feature.description}</p>
+              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+              <p>{feature.description}</p>
             </div>
           ))}
         </div>

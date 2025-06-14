@@ -27,9 +27,9 @@ const testimonials = [
 
 const TestimonialsSection = () => {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16  bg-base-200 text-base-content ">
       <div className="container mx-auto px-6 lg:px-16">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
           What Our Language Learners Say
         </h2>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -39,7 +39,7 @@ const TestimonialsSection = () => {
               className="card bg-base-100 shadow-md p-6 space-y-4"
             >
               <FaQuoteLeft className="text-2xl text-blue-600" />
-              <p className="text-gray-700">“{item.feedback}”</p>
+              <p className="">“{item.feedback}”</p>
               <div className="flex items-center gap-4 mt-4">
                 <img
                   src={item.avatar}
@@ -47,7 +47,7 @@ const TestimonialsSection = () => {
                   className="w-12 h-12 rounded-full object-cover border"
                 />
                 <div>
-                  <h4 className="text-sm font-semibold text-gray-800">
+                  <h4 className="text-sm font-semibold">
                     {item.name}
                   </h4>
                   <span className="text-xs text-gray-500">{item.role}</span>

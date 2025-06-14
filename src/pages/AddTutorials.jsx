@@ -40,13 +40,13 @@ const AddTutorials = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto my-12 px-4">
-      <div className="bg-white dark:bg-gray-900 rounded-xl shadow-md p-8">
-        <h2 className="text-2xl font-semibold text-center mb-6 text-gray-800 dark:text-white">
+    <div className="max-w-3xl mx-auto my-12 px-4 bg-base-100 text-base-content">
+      <div className=" dark:bg-gray-900 rounded-xl shadow-md p-8">
+        <h2 className="text-2xl font-semibold text-center mb-6">
           Add New Tutorial
         </h2>
         <form onSubmit={handleAddTutorials} className="space-y-5">
-          {/* Auto-filled Name and Email */}
+          {/* auto-filled Name and Email */}
           <div className="grid md:grid-cols-2 gap-4">
             <div>
               <label className="block mb-1 font-medium">Name</label>
@@ -70,7 +70,7 @@ const AddTutorials = () => {
             </div>
           </div>
 
-          {/* Image */}
+          
           <div>
             <label className="block mb-1 font-medium">Image URL</label>
             <input
@@ -82,7 +82,7 @@ const AddTutorials = () => {
             />
           </div>
 
-          {/* Language */}
+          
           <div>
             <label className="block mb-1 font-medium">Language</label>
             <select
@@ -103,7 +103,7 @@ const AddTutorials = () => {
             </select>
           </div>
 
-          {/* Price */}
+          
           <div>
             <label className="block mb-1 font-medium">Price ($)</label>
             <input
@@ -115,7 +115,7 @@ const AddTutorials = () => {
             />
           </div>
 
-          {/* Description */}
+          
           <div>
             <label className="block mb-1 font-medium">Description</label>
             <textarea
@@ -127,7 +127,7 @@ const AddTutorials = () => {
             ></textarea>
           </div>
 
-          {/* Review (default 0) */}
+          {/* review */}
           <div>
             <label className="block mb-1 font-medium">Review</label>
             <input
@@ -139,7 +139,7 @@ const AddTutorials = () => {
             />
           </div>
 
-          {/* Submit */}
+          
           <div className="text-center">
             <button
               type="submit"

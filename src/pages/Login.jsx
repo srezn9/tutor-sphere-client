@@ -110,14 +110,14 @@ const Login = () => {
   };
 
   return (
-    <div className="card bg-base-100 w-full mx-auto max-w-sm shrink-0 shadow-2xl my-12">
-      <h2 className="text-center p-5 text-3xl font-bold text-violet-950">
+    <div className="card bg-base-100 w-full mx-auto max-w-sm shrink-0 shadow-2xl my-12 text-base-content">
+      <h2 className="text-center p-5 text-3xl font-bold">
         Login Now
       </h2>
 
       <form onSubmit={handleLogin} className="card-body">
         <fieldset className="fieldset">
-          <label className="label text-violet-950">Email</label>
+          <label className="label">Email</label>
           <input
             type="email"
             name="email"
@@ -126,7 +126,7 @@ const Login = () => {
             required
           />
 
-          <label className="label text-violet-950">Password</label>
+          <label className="label">Password</label>
           <input
             type="password"
             name="password"
@@ -157,7 +157,7 @@ const Login = () => {
             Continue with Google
           </button>
 
-          <p className="pt-5 text-center text-violet-950">
+          <p className="pt-5 text-center">
             Don't have an account?{" "}
             <Link to="/register" className="text-violet-600 underline">
               Register

@@ -84,13 +84,13 @@ const Register = () => {
   };
 
   return (
-    <div className="card bg-base-100 w-full mx-auto max-w-sm shrink-0 shadow-2xl my-12">
-      <h2 className="text-center p-5 text-3xl font-bold text-violet-950">
+    <div className="card bg-base-100 w-full mx-auto max-w-sm shrink-0 shadow-2xl my-12 text-base-content">
+      <h2 className="text-center p-5 text-3xl font-bold">
         Register Now
       </h2>
       <form onSubmit={handleRegister} className="card-body">
         <fieldset className="fieldset">
-          <label className="label text-violet-950">Name</label>
+          <label className="label">Name</label>
           <input
             type="text"
             name="name"
@@ -99,7 +99,7 @@ const Register = () => {
             required
           />
 
-          <label className="label text-violet-950">Photo URL</label>
+          <label className="label">Photo URL</label>
           <input
             type="text"
             name="photoURL"
@@ -108,7 +108,7 @@ const Register = () => {
             required
           />
 
-          <label className="label text-violet-950">Email</label>
+          <label className="label">Email</label>
           <input
             type="email"
             name="email"
@@ -117,7 +117,7 @@ const Register = () => {
             required
           />
 
-          <label className="label text-violet-950">Password</label>
+          <label className="label">Password</label>
           <input
             type="password"
             name="password"
@@ -132,7 +132,7 @@ const Register = () => {
               id="terms"
               onChange={(e) => setAccepted(e.target.checked)}
             />
-            <label htmlFor="terms" className="text-sm text-violet-950">
+            <label htmlFor="terms" className="text-sm">
               I accept the{" "}
               <Link to="/terms" className="text-violet-600 underline">
                 Terms and Conditions
