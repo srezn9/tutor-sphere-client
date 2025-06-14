@@ -19,9 +19,9 @@ const Banner = () => {
             Time
           </h1>
           <p className="py-6 max-w-lg text-gray-600">
-            Join <h2 className="text-sm font-bold text-teal-500">
+            Join <span className="text-sm font-bold text-teal-500">
               Tutor<span className="text-violet-500">Sphere</span>
-            </h2>
+            </span>
             – your gateway to expert tutors, personalized language learning, and
             confidence-building through every session.
           </p>

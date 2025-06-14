@@ -12,10 +12,6 @@ import {
 import { AuthContext } from "../Contexts/AuthContext";
 import { auth } from "../firebase.init";
 
-
-
-
-
 const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
@@ -43,10 +39,29 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
       setLoading(false);
+
+      // save user to DB if logged in
+      if (currentUser?.email) {
+        try {
+          const res = await fetch("http://localhost:3000/users", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name: currentUser.displayName || "No Name",
+              email: currentUser.email,
+            }),
+          });
+          const data = await res.json();
+          console.log("User sent to DB:", data);
+        } catch (error) {
+          console.error(" Failed to send user to DB:", error);
+        }
+      }
     });
+
     return () => unsubscribe();
   }, []);
 
