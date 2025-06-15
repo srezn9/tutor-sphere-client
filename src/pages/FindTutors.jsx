@@ -8,7 +8,9 @@ const FindTutors = () => {
   const fetchTutors = async (language = "") => {
     try {
       const res = await fetch(
-        `http://localhost:3000/tutors${language ? `?language=${language}` : ""}`
+        `https://tutor-sphere-server.vercel.app/tutors${
+          language ? `?language=${language}` : ""
+        }`
       );
       const data = await res.json();
       setTutors(data);

@@ -9,7 +9,7 @@ const MyTutorials = () => {
 
   const fetchTutorials = () => {
     if (user?.email) {
-      fetch(`http://localhost:3000/tutors?email=${user.email}`)
+      fetch(`https://tutor-sphere-server.vercel.app/tutors?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => setTutorials(data))
         .catch((err) => console.error("Failed to fetch tutorials", err));
@@ -32,7 +32,7 @@ const MyTutorials = () => {
     });
 
     if (result.isConfirmed) {
-      await fetch(`http://localhost:3000/tutors/${id}`, {
+      await fetch(`https://tutor-sphere-server.vercel.app/tutors/${id}`, {
         method: "DELETE",
       });
 
@@ -53,7 +53,7 @@ const MyTutorials = () => {
     };
 
     const res = await fetch(
-      `http://localhost:3000/tutors/${selectedTutor._id}`,
+      `https://tutor-sphere-server.vercel.app/tutors/${selectedTutor._id}`,
       {
         method: "PATCH",
         headers: {
@@ -86,9 +86,7 @@ const MyTutorials = () => {
               <th className="px-4 py-3 font-medium">Image</th>
               <th className="px-4 py-3 font-medium">Language</th>
               <th className="px-4 py-3 font-medium">Price</th>
-              <th className="px-4 py-3 font-medium">
-                Description
-              </th>
+              <th className="px-4 py-3 font-medium">Description</th>
               <th className="px-4 py-3 font-medium">Review</th>
               <th className="px-4 py-3 font-medium">Actions</th>
             </tr>

@@ -3,10 +3,9 @@ import { useContext } from "react";
 import { AuthContext } from "../Contexts/AuthContext";
 import Swal from "sweetalert2";
 
-
 const TutorDetails = () => {
   const tutor = useLoaderData();
-  const { user } = useContext(AuthContext); 
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleBooking = async () => {
@@ -19,29 +18,28 @@ const TutorDetails = () => {
       email: user?.email, // current logged in user
     };
 
-    const res = await fetch("http://localhost:3000/bookings", {
+    const res = await fetch("https://tutor-sphere-server.vercel.app/bookings", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(bookingInfo),
     });
 
-    
-  if (res.ok) {
-    Swal.fire({
-      icon: "success",
-      title: "Booking Successful!",
-      text: `You've booked ${tutor.name}.`,
-    }).then(() => {
-      navigate("/myBookedTutors");
-    });
-  } else {
-    Swal.fire({
-      icon: "error",
-      title: "Booking Failed!",
-      text: "Please try again later.",
-    });
-  }
-}
+    if (res.ok) {
+      Swal.fire({
+        icon: "success",
+        title: "Booking Successful!",
+        text: `You've booked ${tutor.name}.`,
+      }).then(() => {
+        navigate("/myBookedTutors");
+      });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Booking Failed!",
+        text: "Please try again later.",
+      });
+    }
+  };
   return (
     <div className="p-6 max-w-4xl mx-auto">
       <img src={tutor.image} alt={tutor.name} className="rounded-3xl mb-4" />

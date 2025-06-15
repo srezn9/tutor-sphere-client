@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { FaAngleRight } from "react-icons/fa";
 import { Link } from "react-router";
-
+import Loader from "./Loader";
 
 const LanguageCategories = () => {
   const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:3000/tutors")
+    fetch("https://tutor-sphere-server.vercel.app/tutors")
       .then((res) => res.json())
       .then((data) => {
         const uniqueLanguages = [];
@@ -25,9 +26,17 @@ const LanguageCategories = () => {
         });
 
         setCategories(uniqueLanguages.slice(0, 9));
+         setLoading(false);
       });
   }, []);
-  
+
+   if (loading) {
+    return (
+      <div className="min-h-[50vh] flex justify-center items-center">
+        <Loader></Loader>
+      </div>
+    );
+  }
 
   return (
     <div className="px-6 py-10">

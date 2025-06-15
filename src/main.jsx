@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <HomeLayout></HomeLayout>,
     errorElement: <ErrorPage></ErrorPage>,
-    hydrateFallbackElement:<Loader></Loader>,
+    hydrateFallbackElement: <Loader></Loader>,
     children: [
       {
         path: "/",
@@ -32,7 +32,9 @@ const router = createBrowserRouter([
       {
         path: "/findTutors",
         loader: async () => {
-          const res = await fetch("http://localhost:3000/tutors");
+          const res = await fetch(
+            "https://tutor-sphere-server.vercel.app/tutors"
+          );
           const data = await res.json();
           return data;
         },
@@ -43,7 +45,9 @@ const router = createBrowserRouter([
         path: "/findTutors/:category",
         element: <FindTutorsByCategory />,
         loader: async ({ params }) => {
-          const res = await fetch("http://localhost:3000/tutors");
+          const res = await fetch(
+            "https://tutor-sphere-server.vercel.app/tutors"
+          );
           const data = await res.json();
           return data.filter(
             (tutor) =>
@@ -55,35 +59,45 @@ const router = createBrowserRouter([
       {
         path: "/tutors/:id",
         loader: async ({ params }) => {
-          const res = await fetch(`http://localhost:3000/tutors/${params.id}`);
+          const res = await fetch(
+            `https://tutor-sphere-server.vercel.app/tutors/${params.id}`
+          );
           const data = await res.json();
           return data;
         },
-        element: <PrivateRoute>
-          <TutorDetails></TutorDetails>
-        </PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <TutorDetails></TutorDetails>
+          </PrivateRoute>
+        ),
         hydrateFallbackElement: <Loader></Loader>,
       },
 
       {
         path: "/addTutorials",
-        element: <PrivateRoute>
-          <AddTutorials></AddTutorials>
-        </PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <AddTutorials></AddTutorials>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/myBookedTutors",
-        element: <PrivateRoute>
-          <BookedTutors></BookedTutors>
-        </PrivateRoute>,
-        hydrateFallbackElement:<Loader></Loader>,
+        element: (
+          <PrivateRoute>
+            <BookedTutors></BookedTutors>
+          </PrivateRoute>
+        ),
+        hydrateFallbackElement: <Loader></Loader>,
       },
       {
         path: "/myTutorials",
-        element: <PrivateRoute>
-          <MyTutorials></MyTutorials>
-        </PrivateRoute>,
-        hydrateFallbackElement:<Loader></Loader>,
+        element: (
+          <PrivateRoute>
+            <MyTutorials></MyTutorials>
+          </PrivateRoute>
+        ),
+        hydrateFallbackElement: <Loader></Loader>,
       },
       {
         path: "/login",

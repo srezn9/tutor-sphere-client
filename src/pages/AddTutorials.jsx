@@ -17,7 +17,7 @@ const AddTutorials = () => {
     newTutorial.price = parseFloat(newTutorial.price);
     newTutorial.review = parseInt(newTutorial.review);
 
-    fetch("http://localhost:3000/tutors", {
+    fetch("https://tutor-sphere-server.vercel.app/tutors", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -70,7 +70,6 @@ const AddTutorials = () => {
             </div>
           </div>
 
-          
           <div>
             <label className="block mb-1 font-medium">Image URL</label>
             <input
@@ -82,7 +81,6 @@ const AddTutorials = () => {
             />
           </div>
 
-          
           <div>
             <label className="block mb-1 font-medium">Language</label>
             <select
@@ -103,7 +101,6 @@ const AddTutorials = () => {
             </select>
           </div>
 
-          
           <div>
             <label className="block mb-1 font-medium">Price ($)</label>
             <input
@@ -115,7 +112,6 @@ const AddTutorials = () => {
             />
           </div>
 
-          
           <div>
             <label className="block mb-1 font-medium">Description</label>
             <textarea
@@ -139,7 +135,6 @@ const AddTutorials = () => {
             />
           </div>
 
-          
           <div className="text-center">
             <button
               type="submit"

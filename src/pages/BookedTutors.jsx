@@ -12,7 +12,7 @@ const BookedTutors = () => {
 
       try {
         const res = await fetch(
-          `http://localhost:3000/bookings?email=${user.email}`
+          `https://tutor-sphere-server.vercel.app/bookings?email=${user.email}`
         );
         const data = await res.json();
         setBookings(data);
@@ -29,7 +29,7 @@ const BookedTutors = () => {
 
     try {
       const res = await fetch(
-        `http://localhost:3000/tutors/${tutorId}/review`,
+        `https://tutor-sphere-server.vercel.app/tutors/${tutorId}/review`,
         {
           method: "PATCH",
         }
@@ -38,7 +38,6 @@ const BookedTutors = () => {
       if (res.ok) {
         Swal.fire("Thanks!", "Your review has been added.", "success");
 
-        
         setBookings((prev) =>
           prev.map((item) =>
             item.tutorId === tutorId
@@ -69,16 +68,14 @@ const BookedTutors = () => {
               className=" bg-base-100 rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow"
             >
               <div className="flex justify-center">
-                <img 
-                src={tutor.image}
-                alt={tutor.name}
-                className="w-50 p-4 rounded-3xl"
-              />
-                </div>
+                <img
+                  src={tutor.image}
+                  alt={tutor.name}
+                  className="w-50 p-4 rounded-3xl"
+                />
+              </div>
               <div className="p-4">
-                <h2 className="text-xl font-semibold">
-                  {tutor.name}
-                </h2>
+                <h2 className="text-xl font-semibold">{tutor.name}</h2>
                 <p>
                   <span className="font-medium">Language:</span>{" "}
                   {tutor.language}
@@ -87,8 +84,7 @@ const BookedTutors = () => {
                   <span className="font-medium">Price:</span> ${tutor.price}
                 </p>
                 <p>
-                  <span className="font-medium">Reviews:</span>{" "}
-                  {tutor.review}
+                  <span className="font-medium">Reviews:</span> {tutor.review}
                 </p>
                 <button
                   onClick={() => handleReview(tutor.tutorId)}
