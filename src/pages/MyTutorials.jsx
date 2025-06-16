@@ -70,8 +70,8 @@ const MyTutorials = () => {
         "Tutorial has been updated successfully.",
         "success"
       );
-      setSelectedTutor(null); // Close modal
-      fetchTutorials(); // Refresh data
+      setSelectedTutor(null); // close modal
+      fetchTutorials(); // refresh data
     } else {
       Swal.fire("Error!", "Something went wrong. Try again.", "error");
     }
@@ -137,7 +137,7 @@ const MyTutorials = () => {
         </table>
       </div>
 
-      {/* Modal */}
+      {/* modal */}
       {selectedTutor && (
         <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50">
           <form

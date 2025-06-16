@@ -6,13 +6,11 @@ import { AuthContext } from "../Contexts/AuthContext";
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
 
-  // Theme state: 'light' or 'dark'
+  // Theme state
   const [theme, setTheme] = useState(() => {
-    // Initialize from localStorage or default to 'light'
     return localStorage.getItem("theme") || "light";
   });
 
-  // Update the data-theme attribute when theme changes
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);

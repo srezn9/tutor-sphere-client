@@ -43,7 +43,7 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       setLoading(false);
 
-      // save user to DB if logged in
+      
       if (currentUser?.email) {
         try {
           const res = await fetch("https://tutor-sphere-server.vercel.app/users", {
@@ -54,8 +54,8 @@ const AuthProvider = ({ children }) => {
               email: currentUser.email,
             }),
           });
-          const data = await res.json();
-          console.log("User sent to DB:", data);
+          await res.json();
+          // console.log("User sent to DB:", data);
         } catch (error) {
           console.error(" Failed to send user to DB:", error);
         }

@@ -14,7 +14,7 @@ const AddTutorials = () => {
     const formData = new FormData(form);
     const newTutorial = Object.fromEntries(formData.entries());
 
-    // Parse numeric values
+    
     newTutorial.price = parseFloat(newTutorial.price);
     newTutorial.review = parseInt(newTutorial.review);
 
