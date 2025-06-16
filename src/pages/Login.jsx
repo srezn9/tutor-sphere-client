@@ -3,6 +3,7 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Contexts/AuthContext";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const { login, googleLogin } = useContext(AuthContext);
@@ -111,6 +112,9 @@ const Login = () => {
 
   return (
     <div className="card bg-base-100 w-full mx-auto max-w-sm shrink-0 shadow-2xl my-12 text-base-content">
+      <Helmet>
+              <title>Login || TutorSphere</title>
+            </Helmet>
       <h2 className="text-center p-5 text-3xl font-bold">
         Login Now
       </h2>

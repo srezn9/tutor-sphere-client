@@ -16,6 +16,7 @@ import TutorDetails from "./pages/TutorDetails";
 import PrivateRoute from "./pages/PrivateRoute";
 import BookedTutors from "./pages/BookedTutors";
 import MyTutorials from "./pages/MyTutorials";
+import { HelmetProvider } from "react-helmet-async";
 
 const router = createBrowserRouter([
   {
@@ -113,8 +114,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
+    <HelmetProvider>
     <AuthProvider>
       <RouterProvider router={router} />
     </AuthProvider>
+    </HelmetProvider>
   </StrictMode>
 );

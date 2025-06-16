@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router";
 
 const FindTutors = () => {
@@ -30,6 +31,9 @@ const FindTutors = () => {
 
   return (
     <div className="p-6 max-w-7xl mx-auto  bg-base-200 text-base-content">
+      <Helmet>
+        <title>FindTutors || TutorSphere</title>
+      </Helmet>
       <h1 className="text-4xl font-bold mb-2 text-center">Find Your Tutors</h1>
       <p className="text-center mb-6">
         Explore our curated list of expert language tutors ready to help you

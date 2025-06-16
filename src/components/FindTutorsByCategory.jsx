@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { useLoaderData, useParams } from "react-router";
 
 const FindTutorsByCategory = () => {
@@ -7,6 +8,9 @@ const FindTutorsByCategory = () => {
 
   return (
     <div className="px-4 sm:px-6 py-10 bg-base-100 text-base-content">
+       <Helmet>
+        <title>TutorCategories | TutorSphere</title>
+      </Helmet>
       <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center sm:text-left">
         All {category} Tutors ({tutors.length})
       </h2>

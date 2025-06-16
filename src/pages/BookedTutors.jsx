@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Contexts/AuthContext";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const BookedTutors = () => {
   const { user } = useContext(AuthContext);
@@ -56,6 +57,9 @@ const BookedTutors = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8  bg-base-200 text-base-content">
+      <Helmet>
+              <title>BookedTutors || TutorSphere</title>
+            </Helmet>
       <h1 className="text-3xl font-bold mb-8 text-center">My Booked Tutors</h1>
 
       {bookings.length === 0 ? (

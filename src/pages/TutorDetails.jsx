@@ -2,6 +2,7 @@ import { useLoaderData, useNavigate } from "react-router";
 import { useContext } from "react";
 import { AuthContext } from "../Contexts/AuthContext";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const TutorDetails = () => {
   const tutor = useLoaderData();
@@ -42,6 +43,9 @@ const TutorDetails = () => {
   };
   return (
     <div className="p-6 max-w-4xl mx-auto">
+      <Helmet>
+              <title>TutorDetails || TutorSphere</title>
+            </Helmet>
       <img src={tutor.image} alt={tutor.name} className="rounded-3xl mb-4" />
       <h1 className="text-3xl font-bold">{tutor.name}</h1>
       <p>

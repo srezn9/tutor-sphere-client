@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Contexts/AuthContext";
+import { Helmet } from "react-helmet-async";
 
 const MyTutorials = () => {
   const [tutorials, setTutorials] = useState([]);
@@ -78,6 +79,9 @@ const MyTutorials = () => {
 
   return (
     <div className="p-6 max-w-6xl mx-auto  bg-base-200 text-base-content">
+      <Helmet>
+              <title>MyTutorials || TutorSphere</title>
+            </Helmet>
       <h2 className="text-2xl font-bold mb-4">My Tutorials</h2>
       <div className="overflow-x-auto shadow rounded-lg border bg-base-100">
         <table className="min-w-full divide-y divide-gray-100 text-sm text-left">

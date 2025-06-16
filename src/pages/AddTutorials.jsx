@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Contexts/AuthContext";
+import { Helmet } from "react-helmet-async";
 
 const AddTutorials = () => {
   const { user } = useContext(AuthContext);
@@ -41,6 +42,9 @@ const AddTutorials = () => {
 
   return (
     <div className="max-w-3xl mx-auto my-12 px-4 bg-base-100 text-base-content">
+      <Helmet>
+              <title>AddTutorials || TutorSphere</title>
+            </Helmet>
       <div className=" dark:bg-gray-900 rounded-xl shadow-md p-8">
         <h2 className="text-2xl font-semibold text-center mb-6">
           Add New Tutorial
