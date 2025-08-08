@@ -61,5 +61,5 @@
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Programming-Hero-Web-Course4/b11a11-client-side-srezn9
+   git clone https://github.com/srezn9/tutor-sphere-client.git
    ```
